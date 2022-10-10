@@ -104,15 +104,15 @@
   
   {{/* BEGIN DOI */}}
   {{- define "DOIPart" }}
-    {{- if .DOI }}
+    {{/*  {{- if .DOI }}
     <a href="https://doi.org/{{ .DOI }}"
        itemprop="identifier"
-       itemtype="https://schema.org/URL">https://doi.org/{{- .DOI -}}</a>
-    {{- else if .URL }}&#32;
-    {{- i18n "apa_retrieved_from" | default "Retrieved from" -}}&#32;
+       itemtype="https://schema.org/URL">https://doi.org/{{- .DOI -}}</a>  */}}
+    {{- if .URL }}&#32;
+    {{/*  {{- i18n "apa_retrieved_from" | default "Retrieved from" -}}&#32;  */}}
     <a href="{{ .URL }}"
        itemprop="identifier"
-       itemtype="https://schema.org/URL">{{ .URL }}</a>
+       itemtype="https://schema.org/URL">{{ .URL }}</a>.
     {{- end -}}
   {{- end -}}
   {{- /* END DOI*/ -}}
@@ -374,7 +374,7 @@
           itemtype="http://schema.org/Organization"
           itemscope>
       <span itemprop="name">
-        {{- . -}}{{- end -}}
+        {{- . -}}.{{- end -}}
       </span> {{ if isset . "publisher-place" -}}:&#32; <span itemprop="location">{{- echoParam . "publisher-place" -}}</span></span>.
     {{- end }}
     {{- template "ArchivalID" . -}}
