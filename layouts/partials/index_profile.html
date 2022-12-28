@@ -1,6 +1,24 @@
 <div class="profile">
     {{- with site.Params.profileMode }}
     <div class="profile_inner">
+        
+        <div class="text-custom">
+            {{- with site.Params.homeInfoParams }}
+            <article class="first-entry home-info">
+                <header class="entry-header">
+                    <h1>{{ .Title | markdownify }}</h1>
+                </header>
+                <div class="entry-content">
+                    {{ printf "%s" .Content | safeHTML }}
+                </div>
+                <footer class="entry-footer">
+                    {{ partial "social_icons.html" site.Params.socialIcons }}
+                </footer>
+            </article>
+            {{- end }} {{/* site.params.homeinfoparams */}}
+            </div>
+
+        <div class="img-custom">
         {{- if .imageUrl -}}
         {{- $img := "" }}
         {{- if not (urls.Parse .imageUrl).IsAbs }}
@@ -30,9 +48,11 @@
             height="{{ .imageHeight | default 150 }}" width="{{ .imageWidth | default 150 }}" />
         {{- end }}
         {{- end }}
-        <h1>{{ .title | default site.Title | markdownify }}</h1>
+        </div>
+
+        {{/*  <h1>{{ .title | default site.Title | markdownify }}</h1>
         <span>{{ .subtitle | markdownify }}</span>
-        {{- partial "social_icons.html" site.Params.socialIcons -}}
+        {{- partial "social_icons.html" site.Params.socialIcons -}}  */}}
 
         {{- with .buttons }}
         <div class="buttons">
