@@ -12,7 +12,7 @@
                     {{ printf "%s" .Content | safeHTML }}
                 </div>
                 <footer class="entry-footer">
-                    {{ partial "social_icons.html" site.Params.socialIcons }}
+                    {{ partial "social_icons.html" (dict "socialIcons" site.Params.socialIcons "align" site.Params.align) }}
                 </footer>
             </article>
             {{- end }} {{/* site.params.homeinfoparams */}}
@@ -52,7 +52,7 @@
 
         {{/*  <h1>{{ .title | default site.Title | markdownify }}</h1>
         <span>{{ .subtitle | markdownify }}</span>
-        {{- partial "social_icons.html" site.Params.socialIcons -}}  */}}
+        {{ partial "social_icons.html" (dict "socialIcons" site.Params.socialIcons "align" site.Params.align) }}  */}}
 
         {{- with .buttons }}
         <div class="buttons">
